@@ -1,5 +1,5 @@
 from typing import List
-from fastapi import FastAPI, UploadFile, Form
+from fastapi import FastAPI, UploadFile, Form, File
 from fastapi.responses import JSONResponse
 from openai import Client
 from ai import openai_chat
@@ -17,7 +17,7 @@ def read_root():
 async def verify_task(
     task: str = Form(...),
     description: str = Form(...),
-    images: UploadFile = Form(...)
+    images: UploadFile = File(...)
 ):
     try:
         # Compose the prompt for the agent
